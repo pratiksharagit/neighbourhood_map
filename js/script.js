@@ -247,6 +247,7 @@ function initMap() {
         center: {lat: 21.1458, lng: 79.0882},
         mapTypeControl: false,
         styles: styles,
+        animation: google.maps.Animation.BOUNCE,
         disableDefaultUI: true
     };
     if($(window).width() <= 1080) {
@@ -301,12 +302,12 @@ function setAllMap() {
 //Provides information for the markers
 var markers = [
     {   
-    title: "Lisbet Pizza n' Past",
+    title: "Lisbet Pizza n' Pasta",
     lat: 21.148105, 
     lng: 79.092925,
     streetAddress: "Food Court Empress Mall, Empress City",
     cityAddress: "Nagpur,Maharashtra",
-    url: "https://www.zomato.com/nagpur/lisbet-pizza-pasta-sitabuldi",
+    url: "http://www.zomato.com/nagpur/lisbet-pizza-pasta-sitabuldi",
     id: "nav0",
     visible: ko.observable(true),
    status: true
@@ -317,7 +318,7 @@ var markers = [
     lng: 79.067638,
     streetAddress: "240/A, East High Court Road, Civil Lines",
     cityAddress: "Nagpur,Maharashtra",
-    url: "https://www.zomato.com/nagpur/pablo-the-art-cafe-lounge-civil-lines",
+    url: "http://www.zomato.com/nagpur/pablo-the-art-cafe-lounge-civil-lines",
     id: "nav1",
     visible: ko.observable(true),
    status: true
@@ -328,7 +329,7 @@ var markers = [
     lng: 79.080250,
     streetAddress: "2nd Floor, Eternity Mall, Amravati Road, Sitabuldi",
     cityAddress: "Nagpur,Maharashtra",
-    url: "https://www.zomato.com/nagpur/barbeque-nation-sitabuldi",
+    url: "http://www.zomato.com/nagpur/barbeque-nation-sitabuldi",
     id: "nav2",
     visible: ko.observable(true),
     status: true
@@ -339,7 +340,7 @@ var markers = [
     lng: 79.077735,
     streetAddress: "Ground Floor, Aman Lifestyle Nelson Square, Rajnagar, Sadar",
     cityAddress: "Nagpur,Maharashtra",
-    url: "www.visitthecapitol.gov",
+    url: "http://www.zomato.com/nagpur/kareems-sadar",
     id: "nav3",
     visible: ko.observable(true),
     status: true
@@ -350,7 +351,7 @@ var markers = [
     lng: 79.061431,
     streetAddress: "South Ambazari Road, Bajaj Nagar",
     cityAddress: "Nagpur,Maharashtra",
-    url: "https://www.zomato.com/nagpur/pizza-hut-1-bajaj-nagar",
+    url: "http://www.zomato.com/nagpur/pizza-hut-1-bajaj-nagar",
     id: "nav4",
     visible: ko.observable(true),
     status: true
@@ -361,7 +362,7 @@ var markers = [
     lng: 79.064767,
     streetAddress: "Plot 19, Wardha Road",
     cityAddress: "Nagpur,Maharashtra",
-    url: "https://www.zomato.com/nagpur/mainland-china-wardha-road",
+    url: "http://www.zomato.com/nagpur/mainland-china-wardha-road",
     id: "nav5",
     visible: ko.observable(true),
     status: true
@@ -372,7 +373,7 @@ var markers = [
     lng: 79.067059,
     streetAddress: "Plot 1, Near MLA Hostel, Civil Lines",
     cityAddress: "Nagpur,Maharashtra",
-    url: "https://www.zomato.com/nagpur/little-italy-civil-lines",
+    url: "http://www.zomato.com/nagpur/little-italy-civil-lines",
     id: "nav6",
     visible: ko.observable(true),
     status: true
@@ -383,7 +384,7 @@ var markers = [
     lng: 79.078384,
     streetAddress: "5th Floor, Milestone Building, Wardha Road, Ramdaspeth",
     cityAddress: "Nagpur,Maharashtra",
-    url: "https://www.zomato.com/nagpur/10-downing-street-ramdaspeth",
+    url: "http://www.zomato.com/nagpur/10-downing-street-ramdaspeth",
     id: "nav7",
     visible: ko.observable(true),
     status: true
@@ -394,30 +395,48 @@ var markers = [
     lng: 79.058609,
     streetAddress: "202, Cement Road, Shankar Nagar, Dharampeth",
     cityAddress: "Nagpur,Maharashtra",
-    url: "https://www.zomato.com/nagpur/mocha-dharampeth?zrp_bid=0&zrp_pid=1&ref_id=33&ref_type=city",
+    url: "http://www.zomato.com/nagpur/mocha-dharampeth?zrp_bid=0&zrp_pid=1&ref_id=33&ref_type=city",
     id: "nav8",
+    visible: ko.observable(true),
+    status: true
+    }   
+    ,
+    {
+    title: "Panino-The Sandwich World ",
+    lat: 21.146497, 
+    lng: 79.135158,
+    streetAddress: "panino ,Opposite INOX Mall, Wardhaman Nagar",
+    cityAddress: "Nagpur,Maharashtra",
+    url: "http://www.zomato.com/nagpur/panino-the-sandwich-world-wardhaman-nagar",
+    id: "nav9",
+    visible: ko.observable(true),
+    status: true
+    },
+    {
+    title: "Crostino",
+    lat: 21.134221, 
+    lng: 79.115955,
+    streetAddress: "329/B, Sharda Chowk, Ganesh Nagar, Nandanvan",
+    cityAddress: "Nagpur,Maharashtra",
+    url: "http://www.zomato.com/nagpur/crostino-nandanvan",
+    id: "nav10",
     visible: ko.observable(true),
     status: true
     }   
 ];
 
 
-    //Google Street View Image for each inidividual marker & Passed lat and lng to get each image location
-var headingImageView = [5, 235, 55, 170, 190, 240, -10, 10, 190];     
+    //Google Street View Image for each inidividual marker & Passed lat and lng to get each image location    
 var streetViewImage;
 var streetViewUrl = 'https://maps.googleapis.com/maps/api/streetview?size=180x90&location=';
 
-function determineImage() {
-    if (i === 3) {
-        streetViewImage = streetViewUrl + '21.1458, 79.0882&fov=75&heading=' + headingImageView[i] + '&pitch=10';                 
+function MarkerImage() {
+    if (i == 3) {
+        streetViewImage = streetViewUrl + '21.1458, 79.0882&fov=75&pitch=0';                 
     } else if (i === 4) {
-        streetViewImage = streetViewUrl +
-                        markers[i].streetAddress + ',' + markers[i].cityAddress +
-                        '&fov=75&heading=' + headingImageView[i] + '&pitch=10';
+        streetViewImage = streetViewUrl + markers[i].streetAddress + ',' + markers[i].cityAddress +'&fov=75&pitch=0';
     } else {
-       streetViewImage = streetViewUrl +
-                        markers[i].lat + ',' + markers[i].lng +
-                        '&fov=75&heading=' + headingImageView[i] + '&pitch=10'; 
+       streetViewImage = streetViewUrl + markers[i].lat + ',' + markers[i].lng +'&fov=75&pitch=0'; 
                     }                   
 }
 
@@ -431,7 +450,7 @@ function setMarkers(location) {
           position: new google.maps.LatLng(location[i].lat, location[i].lng),
           map: map,
           title: location[i].title,
-           animation: google.maps.Animation.DROP,
+           animation: google.maps.Animation.BOUNCE,
            id: i,
           icon: {
             url: 'img/mark_s.png',
@@ -442,7 +461,7 @@ function setMarkers(location) {
         });
 
         //function to place google street view images within info windows
-        determineImage();
+        MarkerImage();
 
         //infoWindow content to each marker
      location[i].contentString = '<img src="' + streetViewImage + '" alt="Street View Image of ' + location[i].title + '"><br><hr style="margin-bottom: 5px"><strong>' + location[i].title + '</strong><br><p>' + location[i].streetAddress + '<br>' + location[i].cityAddress + '<br></p><a class="web-links" href="http://' + location[i].url + '" target="_blank">' + location[i].url + '</a>';
@@ -516,26 +535,26 @@ setAllMap(map);
     //Nav is repsonsive to smaller screen sizes
 var isNavVisible = true;
 function noNav() {
-    $("#search-nav").animate({
+    $("#place-nav").animate({
                 height: 0, 
             }, 500);
             setTimeout(function() {
-                $("#search-nav").hide();
+                $("#place-nav").hide();
             }, 500);    
-            $("#arrow").attr("src", "img/down-arrow.png");
+            $("#arrow").attr("src", "img/menu.png");
             isNavVisible = false;
 }
 function yesNav() {
-    $("#search-nav").show();
+    $("#place-nav").show();
             var scrollerHeight = $("#scroller").height() + 55;
             if($(window).height() < 600) {
-                $("#search-nav").animate({
+                $("#place-nav").animate({
                     height: scrollerHeight - 100,
                 }, 500, function() {
                     $(this).css('height','auto').css("max-height", 439);
                 });  
             } else {
-            $("#search-nav").animate({
+            $("#place-nav").animate({
                 height: scrollerHeight,
             }, 500, function() {
                 $(this).css('height','auto').css("max-height", 549);
@@ -587,3 +606,8 @@ function makeMarkerIcon(markerColor) {
         return markerImage;
       }
 
+googleError = function googleError() {
+    alert(
+        'Oops. Google Maps did not load. Please refresh the page and try again!'
+    );
+};

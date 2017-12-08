@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Front-end developer Project 5">
     <title>Neighborhood Map Project</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <div id="map-canvas"></div>
-    <div id="search-container">
-        <div id="search-nav">    
-            <input id="input" placeholder="Search…" type="input" data-bind="textInput: query, valueUpdate: 'keydown'" autocomplete="off"></input>
+     <div id="map-canvas"></div>
+    <div id="place-container">
+        <div id="place-nav"> 
+        <input id="input" placeholder=" Search…" type="input" data-bind="textInput: query, valueUpdate: 'keydown'" autocomplete="off"></input>
+        <hr>  
             <div id="scroller">
                 <ul data-bind="template: {name: 'marker', foreach:markers}">
                 </ul>

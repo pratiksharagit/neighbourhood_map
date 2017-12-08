@@ -69,18 +69,17 @@ hr {
     outline: none;
 }
 
-#search-container {
+#place-container {
     position: relative;
     float: right;
     z-index: 3; 
 }
 
-#search-nav {
+#place-nav {
     width: 280px;
     max-height: 549px;
     background-color: rgba(256,256,256,.9);
     border: solid 2px #556B2F;
-    overflow: hidden;
 }
 
 #scroller {
