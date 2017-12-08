@@ -1,12 +1,13 @@
 <strong>Udacity Neighborhood Map: Project 5</strong><br/>
 
-Follow the link to open the project:
-http://dsbotta.github.io/Neighborhood-Map
+### Demo
+https://pratiksharagit.github.io/neighbourhood_map/
 
 #### Basic Description
-This project is SAP using Google Maps API to display the Washington DC area.<br/>
-The markers display many of the monuments and main attractions of the Washington DC area. <br/>
+This project is system using Google Maps API to display the Nagpur,India area.<br/>
+The markers display many of the casual restaurants available for dine-out in this area. <br/>
 <br/>
+
 <strong>Functionality of the page includes:</strong> <br/> 
 	An interactive navigation bar to filter map and navigation bar results using knockout.js, <br/>
 	A reset map button, <br/>
