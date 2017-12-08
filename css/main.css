@@ -41,7 +41,7 @@ li {
 }
         
 li:hover {
-    background-color: orange; 
+    background-color: #86bd53; 
     color: white;
 }
         
@@ -52,8 +52,8 @@ a {
 
 hr { 
     margin: 10px 0 0 0; 
-    color: orange; 
-    border-color: orange;
+    color:  #808000; 
+    border-color: #808000  ;
 }
 
 
