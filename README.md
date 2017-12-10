@@ -9,12 +9,15 @@ The markers display many of the casual restaurants available for dine-out in thi
 <br/>
 
 <strong>Functionality of the page includes:</strong> <br/> 
-	An interactive navigation bar to filter map and navigation bar results using knockout.js, <br/>
-	A reset map button, <br/>
-	Responsive design giving the ability to be used and viewed on all web modern browsing devices
+  1. Displays the list of famous casual restaurant in Nagpur city.<br/> 
+	2. The serach bar to filter map and it displays the locations on the map<br/>
+	3. A reset map button, <br/>
+	4. Responsive design giving the ability to be used and viewed on all web modern browsing devices<br/>
 
-<strong>Sources:</strong><br/>
-http://knockoutjs.com/documentation/introduction.html<br/>
-http://api.jquery.com/<br/>
-http://www.w3schools.com/
+<strong>Resources:</strong><br/>
+1. Google Maps API Documentation<br/>Google Maps API Documentation
+2. http://knockoutjs.com/documentation/introduction.html<br/>
+3. http://api.jquery.com/<br/>
+4. http://www.w3schools.com/<br/>
+5. StackOverflow 
 

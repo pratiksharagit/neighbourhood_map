@@ -1,13 +1,6 @@
 var map;
 var markersArray = [];
-
-function loadScript() {
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAfmdUZkf3Fgti6BE0wBGKlFNYHzocniTw&v=3.exp&callback=initMap';
-  document.body.appendChild(script);
-}
-window.onload = loadScript;
+ var zomatoApiKey = "5f3714ca6c68058e3d51f56d30c8697d";
 
 //Initialize the map and its contents
 function initMap() {  
@@ -247,7 +240,7 @@ function initMap() {
         center: {lat: 21.1458, lng: 79.0882},
         mapTypeControl: false,
         styles: styles,
-        animation: google.maps.Animation.BOUNCE,
+        animation: google.maps.Animation.DROP,
         disableDefaultUI: true
     };
     if($(window).width() <= 1080) {
@@ -296,7 +289,7 @@ function setAllMap() {
   }
 }
 
-
+    // --------- MODEL ---------------
 
 //Information about the different locations
 //Provides information for the markers
@@ -450,7 +443,7 @@ function setMarkers(location) {
           position: new google.maps.LatLng(location[i].lat, location[i].lng),
           map: map,
           title: location[i].title,
-           animation: google.maps.Animation.BOUNCE,
+           animation: google.maps.Animation.DROP,
            id: i,
           icon: {
             url: 'img/mark_s.png',
@@ -470,12 +463,23 @@ function setMarkers(location) {
             content: markers[i].contentString
         });
 
-        //Click marker to view infoWindow
-            //zoom in and center location on click
+//Click marker to view infoWindow
+//zoom in and center location on click
         new google.maps.event.addListener(location[i].holdMarker, 'click', (function(marker, i) {
           return function() {
             infowindow.setContent(location[i].contentString);
             infowindow.open(map,this);
+
+            //Adding animation - when clicked on marker
+                if (location[i].holdMarker.getAnimation() !== null) {
+                    location[i].holdMarker.setAnimation(null);
+                } else {
+                    location[i].holdMarker.setAnimation(google.maps.Animation.BOUNCE);
+                    setTimeout(function () {
+                        location[i].holdMarker.setAnimation(null);
+                    }, 1400); //Two bounces i.e 700*2
+                }
+
             var windowWidth = $(window).width();
             if(windowWidth <= 1080) {
                 map.setZoom(14);
@@ -487,14 +491,31 @@ function setMarkers(location) {
           }; 
         })(location[i].holdMarker, i));
         
-        //Click nav element to view infoWindow
-            //zoom in and center location on click
+
+//Click nav element to view infoWindow
+//zoom in and center location on click
         var searchNav = $('#nav' + i);
         searchNav.click((function(marker, i) {
           return function() {
             infowindow.setContent(location[i].contentString);
             infowindow.open(map,marker);
-            map.setZoom(16);
+
+            //Adding animation - when clicked on marker
+                if (location[i].holdMarker.getAnimation() !== null) {
+                    location[i].holdMarker.setAnimation(null);
+                } else {
+                    location[i].holdMarker.setAnimation(google.maps.Animation.BOUNCE);
+                    setTimeout(function () {
+                        location[i].holdMarker.setAnimation(null);
+                    }, 1400); //Two bounces i.e 700*2
+                }
+
+            var windowWidth = $(window).width();
+            if(windowWidth <= 1080) {
+                map.setZoom(14);
+            } else if(windowWidth > 1080) {
+                map.setZoom(16);  
+            }
             map.setCenter(marker.getPosition());
             location[i].picBoolTest = true;
           }; 
@@ -595,19 +616,8 @@ $(window).resize(function() {
         }    
 });
 
-function makeMarkerIcon(markerColor) {
-        var markerImage = new google.maps.MarkerImage(
-          'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'+ markerColor +
-          '|40|_|%E2%80%A2',
-          new google.maps.Size(21, 34),
-          new google.maps.Point(0, 0),
-          new google.maps.Point(10, 34),
-          new google.maps.Size(21,34));
-        return markerImage;
-      }
-
-googleError = function googleError() {
+function googleError() {
     alert(
         'Oops. Google Maps did not load. Please refresh the page and try again!'
     );
-};
+}

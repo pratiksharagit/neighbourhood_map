@@ -19,7 +19,7 @@
                 <script type="text/html" id="marker">
                     <div data-bind="visible: visible">
                         <a href="#" data-bind="attr: {id: id}">
-                            <li>
+                            <li >
                                 <strong data-bind="text: title"></strong>
                                 <p data-bind="text: streetAddress"></p>
                                 <p data-bind="text: cityAddress"></p> 
@@ -41,5 +41,7 @@
     <script type="text/javascript" src="js/lib/jquery.min.js"></script>
     <script type="text/javascript" src="js/lib/knockout-3.3.0.js"></script>
     <script async type="text/javascript" src="js/script.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfmdUZkf3Fgti6BE0wBGKlFNYHzocniTw&v=3&callback=initMap" onerror="googelError()">
+    </script>
 </body>
 </html>
