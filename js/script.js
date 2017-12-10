@@ -479,7 +479,7 @@ function setMarkers(location) {
                         location[i].holdMarker.setAnimation(null);
                     }, 1400); //Two bounces i.e 700*2
                 }
-
+              //zoom
             var windowWidth = $(window).width();
             if(windowWidth <= 1080) {
                 map.setZoom(14);
@@ -509,7 +509,7 @@ function setMarkers(location) {
                         location[i].holdMarker.setAnimation(null);
                     }, 1400); //Two bounces i.e 700*2
                 }
-
+              //zoom
             var windowWidth = $(window).width();
             if(windowWidth <= 1080) {
                 map.setZoom(14);
@@ -524,7 +524,7 @@ function setMarkers(location) {
 }
 
 //Query through the different locations from nav bar with knockout.js
-    //only display markers and nav elements that match query result
+//only display markers and nav elements that match query result
 var viewModel = {
     query: ko.observable(''),
 };
@@ -552,8 +552,8 @@ setAllMap(map);
 });
 
 //Hide and Show entire Nav/Search Bar on click
-    // Hide/Show Bound to the arrow button
-    //Nav is repsonsive to smaller screen sizes
+// Hide/Show Bound to the arrow button
+//Nav is repsonsive to smaller screen sizes
 var isNavVisible = true;
 function noNav() {
     $("#place-nav").animate({
