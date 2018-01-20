@@ -1,47 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Front-end developer Project 5">
-    <title>Neighborhood Map Project</title>
-    <link rel="stylesheet" href="css/main.css">
-</head>
-<body>
-     <div id="map-canvas"></div>
-    <div id="place-container">
-        <div id="place-nav"> 
-        <input id="input" placeholder=" Search…" type="input" data-bind="textInput: query, valueUpdate: 'keydown'" autocomplete="off"></input>
-        <hr>  
-            <div id="scroller">
-                <ul data-bind="template: {name: 'marker', foreach:markers}">
-                </ul>
-                <script type="text/html" id="marker">
-                    <div data-bind="visible: visible">
-                        <a href="#" data-bind="attr: {id: id}">
-                            <li >
-                                <strong data-bind="text: title"></strong>
-                                <p data-bind="text: streetAddress"></p>
-                                <p data-bind="text: cityAddress"></p> 
-                            </li>
-                        </a>
-                    </div>
-                </script>    
-            </div>
-        </div> 
-        <div id="arrow-container">
-            <img id="arrow" src="img/up-arrow.png" alt="arrow image">
-        </div>   
+<html>
+  <head>
+    <title>Bengaluru Lounges</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Pratiksha Ragit">
+    <meta name="description" content="Bengaluru Lounges">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+
+    <div class="wrapper flex-center">
+      <aside>
+        <h1>Bengaluru Lounges</h1>
+        <div class="search-box">
+          <h2>Search</h2>
+          <input type="text" placeholder="Filter" data-bind="textInput: userInput, event: {keyup: filter}">
+        </div>
+        <div class="markers-list">
+          <h2>Lounge List</h2>
+          <ul data-bind="foreach: visibleMarkersArray">
+            <li data-bind="text: title, click: listClick"></li>
+          </ul>
+        </div>
+      </aside>
+      <main class="map-wrapper">
+        <div id="map"></div>
+      </main>
     </div>
-       
-    <div class="reset-container">
-        <button id="reset">Reset Map Zoom</button>
-    </div>
-    
-    <script type="text/javascript" src="js/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="js/lib/knockout-3.3.0.js"></script>
-    <script async type="text/javascript" src="js/script.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfmdUZkf3Fgti6BE0wBGKlFNYHzocniTw&v=3&callback=initMap" onerror="googelError()">
-    </script>
-</body>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+    <script src="js/app.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfmdUZkf3Fgti6BE0wBGKlFNYHzocniTw&v=3&callback=initMap" onerror="handleGoogleMapsError()"></script>
+  </body>
 </html>
