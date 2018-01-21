@@ -3,7 +3,7 @@
 ### Demo
 https://pratiksharagit.github.io/neighbourhood_map/
 
-###How to run locally
+### How to run locally
 https://github.com/pratiksharagit/neighbourhood_map
 1) Download or clone this repository.
 2) Simply open the index.html file
